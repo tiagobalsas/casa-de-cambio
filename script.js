@@ -1,13 +1,20 @@
+const handleRates = (rates) => {};
+
 const fetchCurrency = (currency) => {
   const endpoint = `https://api.ratesapi.io/api/latest?base=${currency}`;
 
   fetch(endpoint)
     .then((response) => response.json())
-    .then((obj) => console.log(obj))
+    .then((object) => {
+      if (object.error) {
+        throw new Error(object.error);
+      }
+      handleRates(object);
+    })
 
-    .catch((error) => {});
-
-  //tratar os resultados da requisição
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 const handleSearchEvent = () => {
