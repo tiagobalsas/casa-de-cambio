@@ -5,7 +5,7 @@ const handleRates = (ratesData) => {
   entries.forEach((arr) => {
     const [currency, rate] = arr;
     const li = document.createElement('li');
-    li.innerHTML = `<strong>${currency}:</strong> ${rate}`;
+    li.innerHTML = `<strong>${currency}:</strong> ${rate.toFixed(2)}`;
     currencyList.appendChild(li);
   });
 };
