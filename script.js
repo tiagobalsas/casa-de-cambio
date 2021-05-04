@@ -1,4 +1,14 @@
-const handleRates = (rates) => {};
+const handleRates = (ratesData) => {
+  const currencyList = document.querySelector('#currency-list');
+
+  const entries = Object.entries(ratesData.rates);
+  entries.forEach((arr) => {
+    const [currency, rate] = arr;
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${currency}:</strong> ${rate}`;
+    currencyList.appendChild(li);
+  });
+};
 
 const fetchCurrency = (currency) => {
   const endpoint = `https://api.ratesapi.io/api/latest?base=${currency}`;
